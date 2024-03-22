@@ -1,5 +1,7 @@
-<?php 
+<?php
+require_once '../../functions/db_config.php' ;
 require_once('../../functions/helpers.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +16,13 @@ require_once('../../functions/helpers.php');
 
 <body>
     <section id="app">
-    <?php
+        <?php
         require_once('../layout/header.php');
         ?>
         <section class="container-fluid">
             <section class="row">
                 <section class="col-md-2 p-0">
-                <?php
+                    <?php
                     require_once('../layout/side-nav.php');
                     ?>
                 </section>
@@ -41,17 +43,28 @@ require_once('../../functions/helpers.php');
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                               
+                                $query = "SELECT * FROM weblog_tutorial.categories";
+                                $smtm = $connection->prepare($query);
+                                $smtm->execute();
+                                $results = $smtm->fetchAll();
+                                
+                                // dd($results);
+                                $c1=0;
+                                foreach ($results as $result) {
+                                    
+                                ?>
+                                    <tr>
+                                        <td><?= ++$c1; ; ?></td>
+                                        <td><?= $result->title; ?></td>
+                                        <td>
+                                            <a href="" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td>2</td>
-                                    <td>name</td>
-                                    <td>
-                                        <a href="" class="btn btn-info btn-sm">Edit</a>
-                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-
-
+                             <?php } ?>
                             </tbody>
                         </table>
                     </section>
