@@ -1,13 +1,13 @@
-<?php
+<?php 
 require_once('../functions/helpers.php');
-?>
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PHP panel</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="<?= asset('assets/css/bootstrap.min.css'); ?>" media="all" type="text/css">
     <link rel="stylesheet" href="<?= asset('assets/css/style.css/'); ?>" media="all" type="text/css">
 </head>
@@ -29,7 +29,7 @@ require_once('../functions/helpers.php');
 
                     <section style="min-height: 80vh;" class="d-flex justify-content-center align-items-center">
                         <section>
-                            <h1>Admin Panel</h1>
+                            <h1>Management System</h1>
                         </section>
                     </section>
 
