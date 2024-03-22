@@ -1,19 +1,24 @@
-<?php 
+<?php
 //config
 
 define('BASE_URL', 'http://localhost/projects/Weblog/');
 
-function redirect($url) 
- {
-    header('Location : '. trim(BASE_URL,'/'). '/'. trim($url,'/'));
+function redirect($url)
+{
+    header('Location : ' . trim(BASE_URL, '/') . '/' . trim($url, '/'));
+    exit;
 }
-function asset($file) 
- {
-   return trim(BASE_URL,'/'). '/'. trim($file,'/');
+function asset($file)
+{
+    return trim(BASE_URL, '/') . '/' . trim($file, '/');
 }
-echo asset('/assets/css/style.css/');
-
-
-
-
-?>
+function url($url)
+{
+    return trim(BASE_URL, '/') . '/' . trim($url, '/');
+   
+}
+function dd($var)
+{
+    echo "<pre>";
+    var_dump($var);
+}
