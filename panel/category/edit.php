@@ -1,10 +1,22 @@
 <?php
 require('../../functions/helpers.php');
 require_once '../../functions/db_config.php';
-if ((isset($_POST['create'])) && $_POST['name'] != "") {
-    $sql = "INSERT INTO categories(title)VALUES(:title)";
+$sql = "SELECT title FROM categories WHERE id=:id";
+$stmt = $connection->prepare($sql);
+$getId=$_GET['catid'];
+$stmt->bindParam(':id',$getId);
+$stmt->execute();
+global $title;
+$result = $stmt->fetch();
+if(!isset($_GET['catid'])){
+    redirect('panel/category');
+}
+
+if ((isset($_POST['update'])) && $_POST['name'] != "") {
+    $sql = "UPDATE categories SET title=:title WHERE id=:id";
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':title',$_POST['name']);
+    $stmt->bindParam(':id',$getId);
     $stmt->execute();
     redirect('panel/category');
 
@@ -36,13 +48,13 @@ if ((isset($_POST['create'])) && $_POST['name'] != "") {
                 </section>
                 <section class="col-md-10 pt-3">
 
-                    <form action="<?= url('panel/category/create.php'); ?>" method="post">
+                    <form action="<?= url('panel/category/edit.php?catid='.$_GET['catid']); ?>" method="post">
                         <section class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="name ...">
+                            <input type="text" class="form-control" name="name" id="name" value="<?=$result->title?>">
                         </section>
                         <section class="form-group">
-                            <button type="submit" class="btn btn-primary" name="create">Create</button>
+                            <button type="submit" class="btn btn-primary" name="update">Update</button>
                         </section>
 
                     </form>

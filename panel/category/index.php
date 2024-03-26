@@ -1,5 +1,5 @@
 <?php
-require_once '../../functions/db_config.php' ;
+require_once '../../functions/db_config.php';
 require_once('../../functions/helpers.php');
 
 ?>
@@ -30,7 +30,7 @@ require_once('../../functions/helpers.php');
 
                     <section class="mb-2 d-flex justify-content-between align-items-center">
                         <h2 class="h4">Categories</h2>
-                        <a href="create.php" class="btn btn-sm btn-success">Create</a>
+                        <a href="<?= url('panel/category/create.php'); ?>" class="btn btn-sm btn-success">Create</a>
                     </section>
 
                     <section class="table-responsive">
@@ -44,27 +44,27 @@ require_once('../../functions/helpers.php');
                             </thead>
                             <tbody>
                                 <?php
-                               
+
                                 $query = "SELECT * FROM weblog_tutorial.categories";
                                 $smtm = $connection->prepare($query);
                                 $smtm->execute();
                                 $results = $smtm->fetchAll();
-                                
+
                                 // dd($results);
-                                $c1=0;
+                                $c1 = 0;
                                 foreach ($results as $result) {
-                                    
+
                                 ?>
                                     <tr>
-                                        <td><?= ++$c1; ; ?></td>
+                                        <td><?= ++$c1;; ?></td>
                                         <td><?= $result->title; ?></td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="<?= url('panel/category/edit.php?catid=' . $result->id); ?>" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="<?= url('panel/category/delete.php?catid=' . $result->id); ?>" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
 
-                             <?php } ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </section>

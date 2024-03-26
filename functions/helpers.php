@@ -5,8 +5,8 @@ define('BASE_URL', 'http://localhost/projects/Weblog');
 
 function redirect($url)
 {
-    header('Location : ' . trim(BASE_URL, '/') . '/' . trim($url, '/'));
-    exit;
+    header('Location:' . trim(BASE_URL, '/') . '/' . trim($url, '/'));
+   exit;
 }
 function asset($file)
 {
