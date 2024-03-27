@@ -13,7 +13,7 @@ if(!isset($_GET['catid'])){
 }
 
 if ((isset($_POST['update'])) && $_POST['name'] != "") {
-    $sql = "UPDATE categories SET title=:title WHERE id=:id";
+    $sql = "UPDATE categories SET title=:title , update_time=NOW() WHERE id=:id";
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':title',$_POST['name']);
     $stmt->bindParam(':id',$getId);
@@ -29,7 +29,7 @@ if ((isset($_POST['update'])) && $_POST['name'] != "") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Category</title>
+    <title>Edit Category</title>
     <link rel="stylesheet" href="<?= asset('assets/css/bootstrap.min.css'); ?>" media="all" type="text/css">
     <link rel="stylesheet" href="<?= asset('assets/css/style.css/'); ?>" media="all" type="text/css">
 </head>
@@ -47,7 +47,6 @@ if ((isset($_POST['update'])) && $_POST['name'] != "") {
                     ?>
                 </section>
                 <section class="col-md-10 pt-3">
-
                     <form action="<?= url('panel/category/edit.php?catid='.$_GET['catid']); ?>" method="post">
                         <section class="form-group">
                             <label for="name">Name</label>
