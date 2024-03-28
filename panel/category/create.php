@@ -1,6 +1,7 @@
 <?php
 require('../../functions/helpers.php');
 require_once '../../functions/db_config.php';
+require_once '../../functions/chk-login.php';
 if ((isset($_POST['create'])) && $_POST['name'] != "") {
     $sql = "INSERT INTO categories(title)VALUES(:title)";
     $stmt = $connection->prepare($sql);

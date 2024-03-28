@@ -1,6 +1,7 @@
 <?php
 require_once '../../functions/db_config.php';
 require_once('../../functions/helpers.php');
+require_once '../../functions/chk-login.php';
 $sql = "SELECT * FROM categories";
 $stmt = $connection->prepare($sql);
 $stmt->execute();

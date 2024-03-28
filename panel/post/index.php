@@ -1,6 +1,7 @@
 <?php
 require_once '../../functions/db_config.php';
 require_once('../../functions/helpers.php');
+require_once '../../functions/chk-login.php';
 $sql = "SELECT posts.*,categories.title AS cat_name FROM posts LEFT JOIN categories ON
 posts.cat_id = categories.id ";
 $smtm = $connection->prepare($sql);

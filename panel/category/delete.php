@@ -1,6 +1,7 @@
 <?php
 require_once '../../functions/db_config.php' ;
 require_once('../../functions/helpers.php');
+require_once '../../functions/chk-login.php';
 if ((isset($_REQUEST['catid']))&&$_GET['catid']!='') {
     $sql = "DELETE FROM categories WHERE id=:id";
     $stmt = $connection->prepare($sql);
