@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:gray">
-    <a class="navbar-brand" href="">Admin Panel</a>
+    <a class="navbar-brand" href="<?= url(''); ?>">Home</a>
     <section class="collapse navbar-collapse" id="navbarSupportedContent"></section>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
